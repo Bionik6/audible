@@ -9,19 +9,23 @@
 /* Begin PBXBuildFile section */
 		400CA9351D7ECFC1007A8D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400CA9341D7ECFC1007A8D31 /* AppDelegate.swift */; };
 		400CA9371D7ECFC1007A8D31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400CA9361D7ECFC1007A8D31 /* ViewController.swift */; };
-		400CA93A1D7ECFC1007A8D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400CA9381D7ECFC1007A8D31 /* Main.storyboard */; };
 		400CA93C1D7ECFC1007A8D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 400CA93B1D7ECFC1007A8D31 /* Assets.xcassets */; };
 		400CA93F1D7ECFC1007A8D31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400CA93D1D7ECFC1007A8D31 /* LaunchScreen.storyboard */; };
+		400CA9471D7ED526007A8D31 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400CA9461D7ED526007A8D31 /* PageCell.swift */; };
+		400CA9491D7ED805007A8D31 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400CA9481D7ED805007A8D31 /* Page.swift */; };
+		40E2BE9A1D8951FD00242FAC /* ViewController+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E2BE991D8951FD00242FAC /* ViewController+Handler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		400CA9311D7ECFC1007A8D31 /* BrianAudible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrianAudible.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		400CA9341D7ECFC1007A8D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		400CA9361D7ECFC1007A8D31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		400CA9391D7ECFC1007A8D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		400CA93B1D7ECFC1007A8D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		400CA93E1D7ECFC1007A8D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		400CA9401D7ECFC1007A8D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		400CA9461D7ED526007A8D31 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		400CA9481D7ED805007A8D31 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		40E2BE991D8951FD00242FAC /* ViewController+Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Handler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,12 @@
 			children = (
 				400CA9341D7ECFC1007A8D31 /* AppDelegate.swift */,
 				400CA9361D7ECFC1007A8D31 /* ViewController.swift */,
-				400CA9381D7ECFC1007A8D31 /* Main.storyboard */,
+				40E2BE991D8951FD00242FAC /* ViewController+Handler.swift */,
 				400CA93B1D7ECFC1007A8D31 /* Assets.xcassets */,
 				400CA93D1D7ECFC1007A8D31 /* LaunchScreen.storyboard */,
 				400CA9401D7ECFC1007A8D31 /* Info.plist */,
+				400CA9461D7ED526007A8D31 /* PageCell.swift */,
+				400CA9481D7ED805007A8D31 /* Page.swift */,
 			);
 			path = BrianAudible;
 			sourceTree = "<group>";
@@ -91,11 +97,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Ibrahima Ciss";
 				TargetAttributes = {
 					400CA9301D7ECFC1007A8D31 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ZM7Z6QL6F3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -124,7 +132,6 @@
 			files = (
 				400CA93F1D7ECFC1007A8D31 /* LaunchScreen.storyboard in Resources */,
 				400CA93C1D7ECFC1007A8D31 /* Assets.xcassets in Resources */,
-				400CA93A1D7ECFC1007A8D31 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,21 +143,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				400CA9371D7ECFC1007A8D31 /* ViewController.swift in Sources */,
+				40E2BE9A1D8951FD00242FAC /* ViewController+Handler.swift in Sources */,
 				400CA9351D7ECFC1007A8D31 /* AppDelegate.swift in Sources */,
+				400CA9491D7ED805007A8D31 /* Page.swift in Sources */,
+				400CA9471D7ED526007A8D31 /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		400CA9381D7ECFC1007A8D31 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				400CA9391D7ECFC1007A8D31 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		400CA93D1D7ECFC1007A8D31 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -176,8 +178,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -222,8 +226,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -242,6 +248,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -251,10 +258,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BrianAudible/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.kreativelab.BrianAudible;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -262,10 +271,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BrianAudible/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.kreativelab.BrianAudible;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -288,6 +299,7 @@
 				400CA9451D7ECFC1007A8D31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
