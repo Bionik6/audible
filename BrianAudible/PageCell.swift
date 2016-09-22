@@ -9,18 +9,19 @@
 import UIKit
 
 class PageCell: UICollectionViewCell {
-
+    
+    // MARK: - Properties
     var page: Page? {
         didSet {
             guard let page = page else { return }
-
+            
             imageView.image = UIImage(named: page.imageName)
             let font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium)
             let fontColor = UIColor(white: 0.2, alpha: 1)
-
+            
             let paragraphStype = NSMutableParagraphStyle()
             paragraphStype.alignment = .center
-
+            
             let attributedString = NSMutableAttributedString(string: page.title)
             let length = attributedString.string.characters.count
             attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStype, NSFontAttributeName: font, NSForegroundColorAttributeName: fontColor], range: NSRange(location: 0, length: length))
@@ -28,44 +29,45 @@ class PageCell: UICollectionViewCell {
             textView.attributedText = attributedString
         }
     }
-
-    private let imageView: UIImageView = {
+    
+    fileprivate let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.image = UIImage(named: "page1")
         iv.clipsToBounds = true
         return iv
     }()
-
-    private let separatorLine: UIView = {
+    
+    fileprivate let separatorLine: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(white: 0.9, alpha: 1)
         return view
     }()
-
-    private let textView: UITextView = {
+    
+    fileprivate let textView: UITextView = {
         let tv = UITextView()
         tv.contentInset = UIEdgeInsetsMake(24, 0, 0, 0)
         tv.isEditable = false
         return tv
     }()
-
+    
+    // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupViews()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
-    private func setupViews() {
+
+// MARK: - View Setup
+extension PageCell {
+    fileprivate func setupViews() {
         addSubviews()
-        imageView.addAnchor(top: topAnchor, left: leftAnchor, bottom: separatorLine.topAnchor, right: rightAnchor)
-        textView.addAnchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 0, rightConstant: 20)
-        textView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
-        separatorLine.addAnchor(top: imageView.bottomAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
-        separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        setupConstraints()
     }
     
     private func addSubviews() {
@@ -73,5 +75,12 @@ class PageCell: UICollectionViewCell {
         self.addSubview(textView)
         self.addSubview(separatorLine)
     }
-
+    
+    private func setupConstraints() {
+        imageView.addAnchor(top: topAnchor, left: leftAnchor, bottom: separatorLine.topAnchor, right: rightAnchor)
+        textView.addAnchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 0, rightConstant: 20)
+        textView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
+        separatorLine.addAnchor(top: imageView.bottomAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
+        separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
 }

@@ -10,9 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: - Properties
     let cellId = "cell"
     let loginCellId = "loginCellId"
-    
     var buttonStackTopConstraint: NSLayoutConstraint?
     var pageControlBottomConstraint: NSLayoutConstraint?
     
@@ -25,14 +25,8 @@ class ViewController: UIViewController {
     }()
     
     let buttonStack: UIStackView = {
-        let skipButton = UIButton()
-        skipButton.setTitle("Skip", for: .normal)
-        skipButton.setTitleColor(UIColor(red:1, green:0.591, blue:0, alpha:1), for: .normal)
-        
-        let nextButton = UIButton()
-        nextButton.setTitle("Next", for: .normal)
-        nextButton.setTitleColor(UIColor(red:1, green:0.591, blue:0, alpha:1), for: .normal)
-        
+        let skipButton = UIView.generateButton(title: "Skip")
+        let nextButton = UIView.generateButton(title: "Next")
         let stack = UIStackView(arrangedSubviews: [skipButton, nextButton])
         stack.distribution = .equalCentering
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -61,12 +55,23 @@ class ViewController: UIViewController {
         return control
     }()
     
+    // MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         view.addSubview(pageControl)
         view.addSubview(buttonStack)
         registerCells()
+        setupConstraints()
+    }
+    
+    // MARK: - Views Setup
+    private func registerCells() {
+        collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginCellId)
+    }
+    
+    private func setupConstraints() {
         collectionView.addAnchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         pageControl.addAnchor(top: nil, left: nil, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0)
         buttonStack.addAnchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 20, bottomConstant: 0, rightConstant: 20)
@@ -75,15 +80,10 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([buttonStackTopConstraint!, pageControlBottomConstraint!])
         pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
-    
-    private func registerCells() {
-        collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginCellId)
-    }
 }
 
 
-
+// MARK: - UICollectionView Data Source
 extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -101,6 +101,8 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+
+// MARK: - UICollectionView Delegate
 extension ViewController: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let currentPage = Int(targetContentOffset.pointee.x / view.frame.width)
@@ -110,21 +112,5 @@ extension ViewController: UICollectionViewDelegate {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
-    }
-}
-
-
-extension UIView {
-    
-    func addAnchor(top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil) {
-        self.addAnchor(top: top, left: left, bottom: bottom, right: right, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0)
-    }
-    
-    func addAnchor(top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        if let top = top { self.topAnchor.constraint(equalTo: top, constant: topConstant).isActive = true }
-        if let left = left { self.leftAnchor.constraint(equalTo: left, constant: leftConstant).isActive = true }
-        if let bottom = bottom { self.bottomAnchor.constraint(equalTo: bottom, constant: bottomConstant).isActive = true }
-        if let right = right { self.rightAnchor.constraint(equalTo: right, constant: -rightConstant).isActive = true }
     }
 }

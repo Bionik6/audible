@@ -13,6 +13,7 @@
 		400CA93F1D7ECFC1007A8D31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400CA93D1D7ECFC1007A8D31 /* LaunchScreen.storyboard */; };
 		400CA9471D7ED526007A8D31 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400CA9461D7ED526007A8D31 /* PageCell.swift */; };
 		400CA9491D7ED805007A8D31 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400CA9481D7ED805007A8D31 /* Page.swift */; };
+		40A6F1C61D93F4210063A207 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A6F1C51D93F4210063A207 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		400CA9401D7ECFC1007A8D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		400CA9461D7ED526007A8D31 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		400CA9481D7ED805007A8D31 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		40A6F1C51D93F4210063A207 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,12 @@
 			children = (
 				400CA9341D7ECFC1007A8D31 /* AppDelegate.swift */,
 				400CA9361D7ECFC1007A8D31 /* ViewController.swift */,
+				400CA9461D7ED526007A8D31 /* PageCell.swift */,
+				400CA9481D7ED805007A8D31 /* Page.swift */,
+				40A6F1C51D93F4210063A207 /* UIView+Extension.swift */,
 				400CA93B1D7ECFC1007A8D31 /* Assets.xcassets */,
 				400CA93D1D7ECFC1007A8D31 /* LaunchScreen.storyboard */,
 				400CA9401D7ECFC1007A8D31 /* Info.plist */,
-				400CA9461D7ED526007A8D31 /* PageCell.swift */,
-				400CA9481D7ED805007A8D31 /* Page.swift */,
 			);
 			path = BrianAudible;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				400CA9371D7ECFC1007A8D31 /* ViewController.swift in Sources */,
 				400CA9351D7ECFC1007A8D31 /* AppDelegate.swift in Sources */,
 				400CA9491D7ED805007A8D31 /* Page.swift in Sources */,
+				40A6F1C61D93F4210063A207 /* UIView+Extension.swift in Sources */,
 				400CA9471D7ED526007A8D31 /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
