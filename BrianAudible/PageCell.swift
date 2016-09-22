@@ -25,7 +25,6 @@ class PageCell: UICollectionViewCell {
             let length = attributedString.string.characters.count
             attributedString.addAttributes([NSParagraphStyleAttributeName: paragraphStype, NSFontAttributeName: font, NSForegroundColorAttributeName: fontColor], range: NSRange(location: 0, length: length))
             attributedString.append(NSAttributedString(string: "\n\n\(page.message)", attributes: [NSParagraphStyleAttributeName: paragraphStype, NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: fontColor]))
-
             textView.attributedText = attributedString
         }
     }
@@ -61,15 +60,18 @@ class PageCell: UICollectionViewCell {
     }
 
     private func setupViews() {
-        self.addSubview(imageView)
-        self.addSubview(textView)
-        self.addSubview(separatorLine)
+        addSubviews()
         imageView.addAnchor(top: topAnchor, left: leftAnchor, bottom: separatorLine.topAnchor, right: rightAnchor)
         textView.addAnchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 0, rightConstant: 20)
         textView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
-
-        self.separatorLine.addAnchor(top: imageView.bottomAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
-        self.separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        separatorLine.addAnchor(top: imageView.bottomAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
+        separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
+    private func addSubviews() {
+        self.addSubview(imageView)
+        self.addSubview(textView)
+        self.addSubview(separatorLine)
     }
 
 }
