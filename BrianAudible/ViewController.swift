@@ -12,9 +12,8 @@ class ViewController: UIViewController {
     
     let cellId = "cell"
     let loginCellId = "loginCellId"
-    let blackView = UIView()
     
-    var stackTopConstraint: NSLayoutConstraint?
+    var buttonStackTopConstraint: NSLayoutConstraint?
     var pageControlBottomConstraint: NSLayoutConstraint?
     
     lazy var pages: [Page] = {
@@ -58,9 +57,6 @@ class ViewController: UIViewController {
         let control = UIPageControl()
         control.numberOfPages = self.pages.count + 1
         control.currentPageIndicatorTintColor = UIColor(red:1, green:0.591, blue:0, alpha:1)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
-        tapGesture.numberOfTapsRequired = 1
-        control.addGestureRecognizer(tapGesture)
         control.pageIndicatorTintColor = .gray
         return control
     }()
@@ -74,9 +70,9 @@ class ViewController: UIViewController {
         collectionView.addAnchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         pageControl.addAnchor(top: nil, left: nil, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0)
         buttonStack.addAnchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 20, bottomConstant: 0, rightConstant: 20)
-        stackTopConstraint = NSLayoutConstraint(item: buttonStack, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 20)
+        buttonStackTopConstraint = NSLayoutConstraint(item: buttonStack, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 20)
         pageControlBottomConstraint = NSLayoutConstraint(item: pageControl, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -20)
-        NSLayoutConstraint.activate([stackTopConstraint!, pageControlBottomConstraint!])
+        NSLayoutConstraint.activate([buttonStackTopConstraint!, pageControlBottomConstraint!])
         pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
@@ -109,8 +105,8 @@ extension ViewController: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let currentPage = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = currentPage
-        stackTopConstraint?.constant = Int(currentPage) == pages.count ? -50 : 20
-        pageControlBottomConstraint?.constant = Int(currentPage) == pages.count ? 30 : -20
+        buttonStackTopConstraint?.constant = currentPage == pages.count ? -50 : 20
+        pageControlBottomConstraint?.constant = currentPage == pages.count ? 30 : -20
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
